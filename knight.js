@@ -1,6 +1,6 @@
 var board = [];
 var n = 8;
-var canvasSize = 600;
+var canvasSize = 750;
 var started = false;
 
 function drawBoard () {
@@ -19,7 +19,7 @@ function drawBoard () {
       } else {
         fill(255);
       }
-      board[i][j] = new square(i, j, n, board);
+      board[i][j] = new Square(i, j, n, board);
       board[i][j].display();
     }
   }
@@ -46,12 +46,13 @@ function mousePressed() {
 
 function draw() {
   background(255);
-
   drawBoard();
-
   if(!started) {
     started = true;
     buildHeuristic();
   }
 }
 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
